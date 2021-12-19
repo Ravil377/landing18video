@@ -1,0 +1,14 @@
+mixin modal()
+    .modal&attributes(attributes)
+            .modal__container
+                .modal__border
+                    button.modal__close-button.js-modal-close-button
+                    h2.modal__title one more step
+                    form(action="#" method="post").modal__form
+                        .placeholder-container
+                            input(type="email" placeholder=" ")
+                            label Enter your email
+                        .placeholder-container
+                            input(type="password" placeholder=" ")
+                            label Password
+                        button(type="submit").header__button join now

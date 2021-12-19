@@ -1,0 +1,43 @@
+mixin page-girl-video()
+    .container
+        <video autoplay muted loop id="myVideo" class="movie">
+            <source src="./video/1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        .info
+            .info__container 
+                p.info__name Olívia Da Silva
+                p.info__subscribers 1,081 <span>posts</span>2,226k <span>followes</span>
+            .info__foto 
+                img(src="./img/content/olivia.jpg" alt="Olívia Da Silva")
+        header.header 
+            .logo 
+                svg(class='logo__img')
+                    use(xlink:href='img/symbols.svg#logo')        
+        .sidebar
+            main.main 
+                h1.title Do you want to have a video chat with <span>Olívia?</span>
+                p.desc Sign up to continue
+                form(action="#" method="post").form
+                    .placeholder-container.placeholder-container__email
+                        input(type="email" placeholder=" ")
+                        label Enter your email
+                    .placeholder-container.placeholder-container__password
+                        input(type="email" placeholder=" ")
+                        label Enter your password
+                    button(type="submit").form__button sign in
+                .container__buttons 
+                    button.button.button__prev
+                        p Previous girl
+                    button.button.button__next
+                        p Next girl
+            footer.footer 
+                ul.term__list 
+                    li.term__item
+                        a(href="#").term__link Desabonarse
+                    li.term__item
+                        a(href="#").term__link Política de privacidad 
+                    li.term__item
+                        a(href="#").term__link Términos y condiciones
+
+                
