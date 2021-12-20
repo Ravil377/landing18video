@@ -1441,6 +1441,7 @@ template {
         display: flex;
         position: unset;
         margin-top: 57px;
+        margin-bottom: 20px;
     }
 
     .container__buttons_mobil {

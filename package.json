@@ -19,6 +19,7 @@
     "browser-sync": "^2.27.5",
     "css-mqpacker": "^5.0.1",
     "del": "^2.2.2",
+    "gh-pages": "^3.2.3",
     "glob-exec": "^0.1.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^3.1.1",
@@ -55,7 +56,6 @@
     "@fancyapps/fancybox": "^3.5.7",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.2",
-    "gh-pages": "^3.2.3",
     "git": "^0.1.5",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
@@ -75,7 +75,8 @@
     "test:pug": "glob-exec \"src/**/*.pug\" -- \"pug-lint {{files.join(' ')}}\"",
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "start": "gulp dev",
-    "build": "gulp deploy"
+    "build": "gulp deploy",
+    "deploy": "gh-pages -d build"
   },
   "license": "ISC"
 }

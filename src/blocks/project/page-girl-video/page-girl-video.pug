@@ -23,12 +23,12 @@ mixin page-girl-video()
                 h1.title Do you want to have a video chat with <span class="js-title"></span>
                 p.desc Sign up to continue
                 p.desc.desc_modal Sign up to see more girls
-                form(action="#" method="post").form
+                form(action="/" method="POST").form
                     .placeholder-container.placeholder-container__email
-                        input(type="email" placeholder=" ")
+                        input(type="email" placeholder=" " required)
                         label Enter your email
                     .placeholder-container.placeholder-container__password
-                        input(type="password" placeholder=" ")
+                        input(type="password" placeholder=" " required)
                         label Enter your password
                     button(type="submit").form__button sign in
                 .container__buttons 
