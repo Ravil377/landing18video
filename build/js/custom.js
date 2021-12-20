@@ -5682,6 +5682,8 @@
       const avatar = document.querySelector('.js-avatar');
       const subscribe = document.querySelector('.info__subscribers');
       const sidebar = document.querySelector('.sidebar');
+      const containerMovie = document.querySelector('.container__movie');
+      const closeButton = document.querySelector('.modal__close-button');
       new Swiper$1('.swiper', {
         slidesPerView: 1,
         loop: true,
@@ -5690,9 +5692,14 @@
           prevEl: '.js-button-prev'
         }
       });
+      closeButton.addEventListener('click', () => {
+        sidebar.classList.remove('sidebar__modal');
+        containerMovie.classList.remove('container__movie_modal');
+      });
 
       const openmodal = e => {
         sidebar.classList.add('sidebar__modal');
+        containerMovie.classList.add('container__movie_modal');
       };
 
       containerButtons.forEach(button => {
