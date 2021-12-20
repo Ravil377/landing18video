@@ -949,7 +949,8 @@ template {
 }
 
 .info {
-    position: absolute;
+    z-index: 1;
+    position: fixed;
     top: 12px;
     right: 20px;
     display: -ms-flexbox;
@@ -991,17 +992,35 @@ template {
     display: none;
 }
 
-.movie {
+.container__movie {
+    overflow: hidden;
     width: 100%;
-    height: 50vh;
+    height: 50%;
+}
+
+.movie__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.movie__item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 .sidebar {
+    z-index: 2;
     min-height: 339px;
-    position: fixed;
-    bottom: 0;
-    height: auto;
+    height: 50vh;
     width: 100%;
     background: rgba(0, 0, 0, 0.4);
     -webkit-backdrop-filter: blur(200px);
@@ -1014,8 +1033,45 @@ template {
     display: flex;
     -ms-flex-direction: column;
         flex-direction: column;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.sidebar__modal {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.sidebar__modal .main {
+    position: fixed;
+    margin: auto;
+    max-width: 420px;
+    width: auto;
+}
+
+.sidebar__modal .container__buttons {
+    display: none;
+}
+
+.sidebar__modal .title {
+    display: none;
+}
+
+.sidebar__modal .desc {
+    display: none;
+}
+
+.sidebar__modal .desc_modal {
+    display: block;
+}
+
+.sidebar__modal .footer {
+    margin: auto 0 26px 0;
 }
 
 .header {
@@ -1068,6 +1124,10 @@ template {
     letter-spacing: 0.02em;
     color: #ffffff;
     margin-bottom: 20px;
+}
+
+.desc_modal {
+    display: none;
 }
 
 .placeholder-container {
@@ -1172,20 +1232,19 @@ template {
 }
 
 .container__buttons {
-    display: -ms-flexbox;
-    display: flex;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    position: absolute;
     -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
-.container__buttons {
-    width: 100%;
-    position: absolute;
-    top: -64px;
+.container__buttons_mobil {
+    top: 46%;
+    padding: 0 20px;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
 }
 
 .button {
@@ -1194,7 +1253,7 @@ template {
     width: 100%;
     box-sizing: border-box;
     border-radius: 5px;
-    padding: 19px;
+    padding: 12px;
     background-color: #ffffff;
     cursor: pointer;
     transition: 0.3s;
@@ -1223,13 +1282,13 @@ template {
     top: 50%;
     -ms-transform: translateY(-50%);
         transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 4.5V9C19.523 9 24 13.477 24 19C24 19.273 23.99 19.543 23.968 19.81C22.505 17.036 19.638 15.119 16.313 15.005L16 15H14V19.5L6 12L14 4.5ZM8 4.5V7.237L2.92 12L7.999 16.761L8 19.5L0 12L8 4.5Z' fill='%23342922'/%3E%3C/svg%3E%0A");
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 4.5V9C19.523 9 24 13.477 24 19C24 19.273 23.99 19.543 23.968 19.81C22.505 17.036 19.638 15.119 16.313 15.005L16 15H14V19.5L6 12L14 4.5ZM8 4.5V7.237L2.92 12L7.999 16.761L8 19.5L0 12L8 4.5Z' fill='%23342922'/%3E%3C/svg%3E%0A");
 }
 
 .button__prev p {
-    padding-left: 36px;
+    padding-left: 16px;
 }
 
 .button__prev p::before {
@@ -1237,7 +1296,7 @@ template {
 }
 
 .button__next p {
-    padding-right: 36px;
+    padding-right: 16px;
 }
 
 .button__next p::before {
@@ -1247,7 +1306,7 @@ template {
 }
 
 .footer {
-    margin: 0 auto;
+    margin: 20px auto 0;
     width: 100%;
 }
 
@@ -1270,6 +1329,7 @@ template {
 }
 
 .term__link {
+    white-space: nowrap;
     font-family: Gilroy;
     font-style: normal;
     font-weight: normal;
@@ -1328,16 +1388,18 @@ template {
         margin-right: 0;
     }
 
-    .movie {
+    .container__movie {
         width: unset;
         position: fixed;
         right: 0;
         top: 0;
-        min-width: 100%;
-        min-height: 100%;
+        width: 100%;
+        height: 100%;
     }
 
     .sidebar {
+        bottom: 0;
+        position: fixed;
         min-height: unset;
         padding-left: 3.3%;
         padding-right: 3.3%;
@@ -1349,17 +1411,44 @@ template {
         height: 100%;
     }
 
+    .sidebar__modal {
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .sidebar__modal .main {
+        width: 100%;
+    }
+
+    .sidebar__modal .term__list {
+        max-width: 454px;
+    }
+
+    .sidebar__modal .footer {
+        margin: auto 0 26px 48px;
+    }
+
     .logo {
         max-width: 150px;
         height: 54px;
     }
 
     .container__buttons {
+        display: -ms-flexbox;
+        display: flex;
         position: unset;
         margin-top: 57px;
     }
 
+    .container__buttons_mobil {
+        display: none;
+    }
+
     .button {
+        padding: 19px;
         max-width: 180px;
         background-color: transparent;
         border-radius: 6px;
@@ -1373,7 +1462,17 @@ template {
     }
 
     .button p::before {
-        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 4.5V9C19.523 9 24 13.477 24 19C24 19.273 23.99 19.543 23.968 19.81C22.505 17.036 19.638 15.119 16.313 15.005L16 15H14V19.5L6 12L14 4.5ZM8 4.5V7.237L2.92 12L7.999 16.761L8 19.5L0 12L8 4.5Z' fill='white'/%3E%3C/svg%3E%0A");
+        width: 24px;
+        height: 24px;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 4.5V9C19.523 9 24 13.477 24 19C24 19.273 23.99 19.543 23.968 19.81C22.505 17.036 19.638 15.119 16.313 15.005L16 15H14V19.5L6 12L14 4.5ZM8 4.5V7.237L2.92 12L7.999 16.761L8 19.5L0 12L8 4.5Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+
+    .button__prev p {
+        padding-left: 36px;
+    }
+
+    .button__next p {
+        padding-right: 36px;
     }
 
     .term__list {
@@ -1412,6 +1511,7 @@ template {
 
     .footer {
         margin: 0;
+        margin-top: auto;
     }
 }
 

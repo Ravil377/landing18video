@@ -24,33 +24,39 @@
 </head>
 
 <body class="body">
-    <div class="container"><video autoplay muted loop id="myVideo" class="movie">
-            <source src="./video/1.mp4" type="video/mp4">
-            <Your>browser does not support HTML5 video.</Your>
-        </video>
+    <div class="container">
+        <div class="container__movie swiper">
+            <ul class="movie__list swiper-wrapper"> </ul>
+        </div>
         <div class="info">
             <div class="info__container">
-                <p class="info__name">Olívia Da Silva</p>
-                <p class="info__subscribers">1,081 <span>posts</span>2,226k <span>followes</span></p>
+                <p class="info__name"></p>
+                <p class="info__subscribers"></p>
             </div>
-            <div class="info__foto"> <img src="./img/content/olivia.jpg" alt="Olívia Da Silva" /></div>
+            <div class="info__foto"> <img class="js-avatar" src="./img/content/1x1.png" alt="pic" /></div>
         </div>
         <header class="header">
             <div class="logo"> <svg class="logo__img">
                     <use xlink:href="img/symbols.svg#logo"> </use>
                 </svg></div>
         </header>
+        <div class="container__buttons container__buttons_mobil"><button class="button button__prev js-button js-button-prev">
+                <p>Previous girl</p>
+            </button><button class="button button__next js-button js-button-next">
+                <p>Next girl </p>
+            </button></div>
         <div class="sidebar">
             <main class="main">
-                <h1 class="title">Do you want to have a video chat with <span>Olívia?</span></h1>
+                <h1 class="title">Do you want to have a video chat with <span class="js-title"></span></h1>
                 <p class="desc">Sign up to continue</p>
+                <p class="desc desc_modal">Sign up to see more girls</p>
                 <form class="form" action="#" method="post">
                     <div class="placeholder-container placeholder-container__email"><input type="email" placeholder=" " /><label>Enter your email</label></div>
-                    <div class="placeholder-container placeholder-container__password"><input type="email" placeholder=" " /><label>Enter your password</label></div><button class="form__button" type="submit">sign in</button>
+                    <div class="placeholder-container placeholder-container__password"><input type="password" placeholder=" " /><label>Enter your password</label></div><button class="form__button" type="submit">sign in</button>
                 </form>
-                <div class="container__buttons"> <button class="button button__prev">
+                <div class="container__buttons"> <button class="button button__prev js-button-prev js-button">
                         <p>Previous girl</p>
-                    </button><button class="button button__next">
+                    </button><button class="button button__next js-button-next js-button">
                         <p>Next girl</p>
                     </button></div>
             </main>
@@ -60,9 +66,14 @@
                     <li class="term__item"><a class="term__link" href="#">Política de privacidad </a></li>
                     <li class="term__item"><a class="term__link" href="#">Términos y condiciones</a></li>
                 </ul>
-            </footer>
+            </footer><template id="movieCard">
+                <li class="movie__item swiper-slide movie" data-id="" data-name="" data-fullname="" data-subscribe=""><video autoplay muted loop id="myVideo" class="video">
+                        <source src="" type="video/mp4" class="js-video-src">
+                        <Your>browser does not support HTML5 video.</Your>
+                    </video></li>
+            </template>
         </div>
-    </div><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.5.0/dist/lazyload.min.js"></script><script src="js/custom.js"></script>
+    </div><script src="js/custom.js"></script>
 </body>
 
 </html>
