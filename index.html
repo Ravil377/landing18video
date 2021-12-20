@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="date=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
+    <meta content="notranslate" name="google">
+    <meta property="og:image" content="img/sharing/logo.png">
+    <meta property="vk:image" content="img/sharing/logo.png">
+    <meta name="twitter:image:src" content="img/sharing/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.min.css">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#fffff">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+    <title>Главная</title>
+</head>
+
+<body class="body">
+    <div class="container">
+        <div class="container__movie swiper">
+            <ul class="movie__list swiper-wrapper"> </ul>
+        </div>
+        <div class="info">
+            <div class="info__container">
+                <p class="info__name"></p>
+                <p class="info__subscribers"></p>
+            </div>
+            <div class="info__foto"> <img class="js-avatar" src="./img/content/1x1.png" alt="pic" /></div>
+        </div>
+        <header class="header">
+            <div class="logo"> <svg class="logo__img">
+                    <use xlink:href="img/symbols.svg#logo"> </use>
+                </svg></div>
+        </header>
+        <div class="container__buttons container__buttons_mobil"><button class="button button__prev js-button js-button-prev">
+                <p>Previous girl</p>
+            </button><button class="button button__next js-button js-button-next">
+                <p>Next girl </p>
+            </button></div>
+        <div class="sidebar">
+            <main class="main">
+                <h1 class="title">Do you want to have a video chat with <span class="js-title"></span></h1>
+                <p class="desc">Sign up to continue</p>
+                <p class="desc desc_modal">Sign up to see more girls</p>
+                <form class="form" action="#" method="post">
+                    <div class="placeholder-container placeholder-container__email"><input type="email" placeholder=" " /><label>Enter your email</label></div>
+                    <div class="placeholder-container placeholder-container__password"><input type="password" placeholder=" " /><label>Enter your password</label></div><button class="form__button" type="submit">sign in</button>
+                </form>
+                <div class="container__buttons"> <button class="button button__prev js-button-prev js-button">
+                        <p>Previous girl</p>
+                    </button><button class="button button__next js-button-next js-button">
+                        <p>Next girl</p>
+                    </button></div>
+            </main>
+            <footer class="footer">
+                <ul class="term__list">
+                    <li class="term__item"><a class="term__link" href="#">Desabonarse</a></li>
+                    <li class="term__item"><a class="term__link" href="#">Política de privacidad </a></li>
+                    <li class="term__item"><a class="term__link" href="#">Términos y condiciones</a></li>
+                </ul>
+            </footer><template id="movieCard">
+                <li class="movie__item swiper-slide movie" data-id="" data-name="" data-fullname="" data-subscribe=""><video autoplay muted loop id="myVideo" class="video">
+                        <source src="" type="video/mp4" class="js-video-src">
+                        <Your>browser does not support HTML5 video.</Your>
+                    </video></li>
+            </template>
+        </div>
+    </div><script src="js/custom.js"></script>
+</body>
+
+</html>
