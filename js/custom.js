@@ -5734,6 +5734,7 @@
       observer.observe(movieContainer, {
         attributes: true
       });
+      document.getElementById('myVideo').play();
     });
 
 }));
