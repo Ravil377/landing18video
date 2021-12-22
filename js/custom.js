@@ -5664,15 +5664,15 @@
       document.querySelector('.info__subscribers');
       const sidebar = document.querySelector('.sidebar');
       const containerMovie = document.querySelector('.container__movie');
-      const closeButton = document.querySelector('.modal__close-button'); // const swiper = new Swiper('.swiper', {
-      //     slidesPerView: 1,
-      //     loop: true,
-      //     navigation: {
-      //         nextEl: '.js-button-next',
-      //         prevEl: '.js-button-prev',
-      //     },
-      // });
-
+      const closeButton = document.querySelector('.modal__close-button');
+      new Swiper$1('.swiper', {
+        slidesPerView: 1,
+        loop: true,
+        navigation: {
+          nextEl: '.js-button-next',
+          prevEl: '.js-button-prev'
+        }
+      });
       closeButton.addEventListener('click', () => {
         sidebar.classList.remove('sidebar__modal');
         containerMovie.classList.remove('container__movie_modal');
