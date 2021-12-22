@@ -5640,8 +5640,14 @@
       movie: "./video/3.mp4",
       subscribe: "1,345 <span>posts</span>3,546k <span>followes</span>"
     }];
-    document.querySelector('.movie__list');
-    document.querySelector('#movieCard');
+    let count = 0;
+    const movieContainer = document.querySelector('.movie__list');
+    const movieCard = document.querySelector('#movieCard');
+
+    function loadCards(container, data) {
+      const cardsElements = data.map(getCard);
+      container.append(...cardsElements);
+    }
 
     function shuffle(sourceArray) {
       for (var i = 0; i < sourceArray.length - 1; i++) {
@@ -5654,14 +5660,27 @@
       return sourceArray;
     }
 
-    shuffle(movieBd); // loadCards(movieContainer, newMas);
+    function getCard(card) {
+      const cardElement = movieCard.content.cloneNode(true);
+      const videoContainer = cardElement.querySelector(".movie__item");
+      const cardVideo = cardElement.querySelector(".js-video-src");
+      videoContainer.dataset.id = card.id;
+      videoContainer.dataset.name = card.name;
+      videoContainer.dataset.fullname = card.fullName;
+      videoContainer.dataset.img = card.image;
+      videoContainer.dataset.subscribe = card.subscribe;
+      cardVideo.src = card.movie;
+      return cardElement;
+    }
 
+    const newMas = shuffle(movieBd);
+    loadCards(movieContainer, newMas);
     document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.container__buttons');
-      document.querySelector('.info__name');
-      document.querySelector('.js-title');
-      document.querySelector('.js-avatar');
-      document.querySelector('.info__subscribers');
+      const containerButtons = document.querySelectorAll('.container__buttons');
+      const name = document.querySelector('.info__name');
+      const titleName = document.querySelector('.js-title');
+      const avatar = document.querySelector('.js-avatar');
+      const subscribe = document.querySelector('.info__subscribers');
       const sidebar = document.querySelector('.sidebar');
       const containerMovie = document.querySelector('.container__movie');
       const closeButton = document.querySelector('.modal__close-button');
@@ -5677,34 +5696,44 @@
         sidebar.classList.remove('sidebar__modal');
         containerMovie.classList.remove('container__movie_modal');
       });
-      //         button.addEventListener('click', (e) => {
-      //             if(e.target.closest('.js-button-next')) {
-      //                 count = count + 1;
-      //             }
-      //             (e.target.closest('.js-button-next') && count >= 3) && openmodal();
-      //         });
-      //     });
-      //     const handler = () => {
-      //         name.textContent = '';
-      //         titleName.textContent = ''
-      //         let actSlide = movieContainer.querySelector('.swiper-slide-active');
-      //         name.textContent = actSlide.dataset.fullname;
-      //         titleName.textContent = actSlide.dataset.name;
-      //         avatar.src = actSlide.dataset.img;
-      //         avatar.alt = actSlide.dataset.name;
-      //         subscribe.innerHTML = actSlide.dataset.subscribe;
-      //     };
-      //     handler();
-      //     let observer = new MutationObserver(function(mutations) {
-      //         for (let mutation of mutations) {
-      //             if (mutation.type === 'attributes') {
-      //                 handler();
-      //             }
-      //         }
-      //     });
-      //     observer.observe(movieContainer, { attributes: true });
-      //     document.getElementById('myVideo').play();
 
+      const openmodal = e => {
+        sidebar.classList.add('sidebar__modal');
+        containerMovie.classList.add('container__movie_modal');
+      };
+
+      containerButtons.forEach(button => {
+        button.addEventListener('click', e => {
+          if (e.target.closest('.js-button-next')) {
+            count = count + 1;
+          }
+
+          e.target.closest('.js-button-next') && count >= 3 && openmodal();
+        });
+      });
+
+      const handler = () => {
+        name.textContent = '';
+        titleName.textContent = '';
+        let actSlide = movieContainer.querySelector('.swiper-slide-active');
+        name.textContent = actSlide.dataset.fullname;
+        titleName.textContent = actSlide.dataset.name;
+        avatar.src = actSlide.dataset.img;
+        avatar.alt = actSlide.dataset.name;
+        subscribe.innerHTML = actSlide.dataset.subscribe;
+      };
+
+      handler();
+      let observer = new MutationObserver(function (mutations) {
+        for (let mutation of mutations) {
+          if (mutation.type === 'attributes') {
+            handler();
+          }
+        }
+      });
+      observer.observe(movieContainer, {
+        attributes: true
+      }); // document.getElementById('myVideo').play();
     });
 
 }));
